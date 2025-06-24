@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machinery Spare Parts Store</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        table { width: 80%; margin: auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid black; text-align: left; }
+        input { padding: 5px; width: 300px; margin-bottom: 20px; }
+        button { padding: 8px 12px; background-color: green; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: darkgreen; }
+        img { width: 80px; height: auto; }
+    </style>
+</head>
+<body>
+    <h2>Machinery Spare Parts Store</h2>
+    <input type="text" id="search" placeholder="Search parts..." onkeyup="searchParts()">
+    <table id="partsTable">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Part Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity Available</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img src="c:\Users\arpit\Downloads\WhatsApp Image 2025-06-08 at 11.19.05 PM.jpeg" alt="Oil Filter"></td>
+                <td>Oil Filter</td>
+                <td>Machinery</td>
+                <td>$15</td>
+                <td>100</td>
+                <td><button onclick="buyPart('Oil Filter', 15)">Buy Now</button></td>
+            </tr>
+            <tr>
+                <td><img src="c:\Users\arpit\Downloads\WhatsApp Image 2025-06-08 at 11.19.05 PM.jpeg" alt="Hydraulic Pump"></td>
+                <td>Hydraulic Pump</td>
+                <td>Machinery</td>
+                <td>$250</td>
+                <td>20</td>
+                <td><button onclick="buyPart('Hydraulic Pump', 250)">Buy Now</button></td>
+            </tr>
+            <tr>
+                <td><img src="c:\Users\arpit\Downloads\WhatsApp Image 2025-06-08 at 11.19.05 PM.jpeg" alt="Cooling Fan"></td>
+                <td>Cooling Fan</td>
+                <td>Machinery</td>
+                <td>$45</td>
+                <td>50</td>
+                <td><button onclick="buyPart('Cooling Fan', 45)">Buy Now</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function searchParts() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let rows = document.querySelectorAll("#partsTable tbody tr");
+            rows.forEach(row => {
+                let text = row.innerText.toLowerCase();
+                row.style.display = text.includes(input) ? "" : "none";
+            });
+        }
+
+        function buyPart(partName, price) {
+            alert(`You have selected ${partName} for $${price}. Proceed to checkout.`);
+            // Future enhancement: Redirect to a checkout page or add to cart
+        }
+    </script>
+</body>
+</html>
